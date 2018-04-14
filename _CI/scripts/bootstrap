@@ -1,0 +1,22 @@
+#!/bin/bash
+cd $(dirname $0)/../..
+
+source $(which virtualenvwrapper.sh)
+
+[ -z "$WORKON_HOME" ] && WORKON_HOME=$HOME/.virtualenvs
+
+if (! test -d "$WORKON_HOME/docker2bind")
+then
+  echo "Creating virtual env for docker2bind"
+  if (! mkvirtualenv "docker2bind" )
+  then
+    echo "Missing prerequisite virtualenvwrapper, bailing out"
+    exit 1
+  fi
+fi
+
+echo "Working on virtualenv docker2bind"
+source "$WORKON_HOME/docker2bind/bin/activate"
+
+echo "Installing python package requirements.."
+pip install -r requirements.txt

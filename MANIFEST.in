@@ -1,0 +1,16 @@
+include .VERSION
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENCE
+include README.rst
+include requirements.txt
+include USAGE.rst
+include docker2bind/.VERSION
+recursive-include requirements *.txt
+
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile

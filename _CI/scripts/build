@@ -1,0 +1,26 @@
+#!/bin/bash --login
+set -e
+cd $(dirname $0)/../..
+
+. _CI/scripts/bootstrap
+
+rm -rf build dist
+
+# we want all these files to exist in the actual package
+cp .VERSION docker2bind/.VERSION
+cp LICENCE docker2bind/LICENCE
+cp AUTHORS.rst docker2bind/AUTHORS.rst
+cp CONTRIBUTING.rst docker2bind/CONTRIBUTING.rst
+cp HISTORY.rst docker2bind/HISTORY.rst
+cp README.rst docker2bind/README.rst
+cp USAGE.rst docker2bind/USAGE.rst
+
+python setup.py sdist bdist_egg
+
+rm docker2bind/.VERSION
+rm docker2bind/LICENCE
+rm docker2bind/AUTHORS.rst
+rm docker2bind/CONTRIBUTING.rst
+rm docker2bind/HISTORY.rst
+rm docker2bind/README.rst
+rm docker2bind/USAGE.rst
